@@ -13,8 +13,9 @@ int main()
 	d1.ucVal1 = 10;
 	printf("printf d1.ucVal1 :%u\n",d1.ucVal1);
 	d1.lVal2 = 1000;
-	printf("printf d1.ucVal1 :%ld\n",d1.lVal2);
+	printf("printf d1.lVal2 :%ld\n",d1.lVal2);
 	printf("Size of union data : %zu\n",sizeof(d1));
+	printf("Size of union data member ucVal1 : %zu\n",sizeof(d1.ucVal1));
 
 	return 0;
 }
