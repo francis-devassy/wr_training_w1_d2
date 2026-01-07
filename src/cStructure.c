@@ -72,10 +72,10 @@ int main(void)
 	//size_t is an unsigned integer type
 	printf("Struct size:%zu\n",sizeof(ClimateData));
 
-	REG_DATA r1;
+	REG_DATA r1 = {0};
 	r1.ucStatus = 1;
 	r1.ucData = 10;
-	r1.ucAck = 3;
+	r1.ucAck = 2;
 
 	printf("Register data\n");
 	printf("Status: %u\n",r1.ucStatus);
