@@ -2,6 +2,14 @@
 #include <stdbool.h>
 #include "customTypes.h"
 
+typedef struct _REG_DATA_
+{
+	uint8 ucStatus : 1;
+	uint8 ucData : 4;
+	uint8 ucAck : 2;
+
+} REG_DATA;
+
 typedef struct _CLIMATE_SENSOR_DATA_
 {
 	int32 lPressure;
@@ -63,6 +71,16 @@ int main(void)
 
 	//size_t is an unsigned integer type
 	printf("Struct size:%zu\n",sizeof(ClimateData));
+
+	REG_DATA r1;
+	r1.ucStatus = 1;
+	r1.ucData = 10;
+	r1.ucAck = 3;
+
+	printf("Register data\n");
+	printf("Status: %u\n",r1.ucStatus);
+	printf("Data: %u\n",r1.ucData);
+	printf("Ack: %u\n",r1.ucAck);
 
 	return 0;
 }
