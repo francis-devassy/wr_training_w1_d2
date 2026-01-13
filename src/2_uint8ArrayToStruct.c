@@ -5,12 +5,19 @@
 
 #define NAME_STR_MAX_SIZE (50)
 
-typedef struct _USER_DATA_
+typedef struct __attribute__((packed)) _USER_DATA_
 {
 	uint8 ucValue1;
 	uint16 unValue2;
 	uint32 ulValue3;
 } USER_DATA;
+
+// typedef union __attribute__((packed)) _USER_DATA_
+// {
+// 	uint8 ucValue1;
+// 	uint16 unValue2;
+// 	uint32 ulValue3;
+// } USER_DATA;
 
 // typedef struct _USER_DATA2_
 // {
@@ -19,7 +26,7 @@ typedef struct _USER_DATA_
 // 	uint8 ucValue1;
 // } USER_DATA2;
 
-typedef struct __attribute__((packed)) _USER_DATA2_
+typedef union _USER_DATA2_
 {
 	uint8 ucValue1;
 	uint16 unValue2;
@@ -29,17 +36,19 @@ typedef struct __attribute__((packed)) _USER_DATA2_
 
 int main()
 {
-	uint8 ucArray[50] = {5,10,24 , 0, 0,0,0,0,0,0,0};
+	//uint8 ucArray[11] = {0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0xa};
+	uint8 ucArray[11] = {0x12,0x34,0x56,0x78,0x9a,0xbc,0xde,0xf1,0x08,0x09,0xa};
 	USER_DATA *pData = (USER_DATA *) ucArray;
 
 	USER_DATA data;
 	USER_DATA2 data2;
 	
-	printf("ucValue1 = %hhu\n", pData->ucValue1);
-	printf("unValue2 = %hu\n", pData->unValue2);
-	printf("ulValue3 = %lu\n", pData->ulValue3);
+	printf("ucValue1 = %01x\n", pData->ucValue1);
+	printf("unValue2 = %04x\n", pData->unValue2);
+	printf("ulValue3 = %08x\n", pData->ulValue3);
 
-	uint8 ucArray2[50] = {5,10,24};
+	//uint8 ucArray2[11] = {0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0xa};
+	uint8 ucArray2[11] = {0x12,0x34,0x56,0x78,0x9a,0xbc,0xde,0xf1,0x08,0x09,0xa};
 	USER_DATA2 *pData2 = (USER_DATA2 *) ucArray2;
 	printf("ucValue1 = %hhu\n", pData2->ucValue1);
 	printf("unValue2 = %hu\n", pData2->unValue2);
